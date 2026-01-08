@@ -10,25 +10,73 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
     <style>
+      :root {
+        --indigo-primary: #6366f1;
+        --purple-primary: #a855f7;
+        --pink-primary: #ec4899;
+      }
+
       body {
         font-family: 'Inter', sans-serif;
         background-color: #0a0a0c;
         color: #ffffff;
+        overflow-x: hidden;
       }
-      h1, h2, h3, .font-gamer {
+
+      h1, h2, h3, h4, .font-gamer {
         font-family: 'Orbitron', sans-serif;
       }
+
       .glass {
         background: rgba(20, 20, 24, 0.7);
-        backdrop-filter: blur(12px);
-        border: 1px solid rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.08);
       }
+
       .game-gradient {
-        background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+        background: linear-gradient(135deg, var(--indigo-primary) 0%, var(--purple-primary) 50%, var(--pink-primary) 100%);
       }
+
       .text-glow {
-        text-shadow: 0 0 10px rgba(168, 85, 247, 0.5);
+        text-shadow: 0 0 15px rgba(168, 85, 247, 0.6);
       }
+
+      /* Custom Animations */
+      @keyframes scroll-indicator {
+        0% { transform: translateY(-100%); opacity: 0; }
+        50% { opacity: 1; }
+        100% { transform: translateY(100%); opacity: 0; }
+      }
+      .animate-scroll-indicator {
+        animation: scroll-indicator 2s infinite ease-in-out;
+      }
+
+      @keyframes pulse-slow {
+        0%, 100% { transform: scale(1); opacity: 0.3; }
+        50% { transform: scale(1.05); opacity: 0.4; }
+      }
+      .animate-pulse-slow {
+        animation: pulse-slow 8s infinite ease-in-out;
+      }
+
+      @keyframes bounce-slow {
+        0%, 100% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+      }
+      .animate-bounce-slow {
+        animation: bounce-slow 4s infinite ease-in-out;
+      }
+
+      /* Transitions */
+      .page-transition {
+        animation: fadeIn 0.5s ease-out;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+
       ::-webkit-scrollbar {
         width: 8px;
       }
@@ -40,20 +88,20 @@
         border-radius: 4px;
       }
       ::-webkit-scrollbar-thumb:hover {
-        background: #6366f1;
+        background: var(--indigo-primary);
       }
     </style>
-  <script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react-router-dom": "https://esm.sh/react-router-dom@^7.12.0",
-    "react/": "https://esm.sh/react@^19.2.3/"
-  }
-}
-</script>
-</head>
+    <script type="importmap">
+    {
+      "imports": {
+        "react": "https://esm.sh/react@^19.2.3",
+        "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
+        "react-router-dom": "https://esm.sh/react-router-dom@^7.12.0",
+        "react/": "https://esm.sh/react@^19.2.3/"
+      }
+    }
+    </script>
+  </head>
   <body>
     <div id="root"></div>
   </body>
